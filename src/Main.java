@@ -2,7 +2,7 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 void main() {
 
-    System.out.println("hola");
+    System.out.println("tomi gay");
 
 
 }
