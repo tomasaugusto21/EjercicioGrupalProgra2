@@ -90,23 +90,26 @@ public abstract class Animal {
     //no se donde ni como implementar comer o que carajo, la consigna muy vaga no me pone limites
     // entonces no se si hacerlo basico y no sobrecomplicarme...
     //comer y chequeo comer podrian ir juntas...
-    public void comer() {
+    public boolean comer() {
         if (chequeoComer()) {
             this.hambre -= 1;
             if (chequeoSalud()) {
                 this.salud += 1;
             }
+            return true;
         }
-
+        return false;
     }
 
-    public void limpiarse() {
+    public boolean limpiarse() {
         if (chequeoSucio()) {
             this.higiene -= 1;
+            return true;
         }
+        return false;
     }
 
-    public void correr() {
+    public boolean correr() {
         // En lugar de "new Random()", pides el generador por defecto de Java
         RandomGenerator generator = RandomGenerator.getDefault();
 
@@ -116,14 +119,18 @@ public abstract class Animal {
 
         if (numeroAleatorio > 70) {
             this.salud -= 1;
+            return true;
         }
+        return false;
     }
     
-    public void rehabilitar(){
+    public boolean rehabilitar(){
         if(this.salud == 0){
             this.salud += 1;
             enfermarse();
+            return true;
         }
+        return false;
     }
 
     public boolean enfermarse(){
