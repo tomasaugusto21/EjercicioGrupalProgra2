@@ -1,3 +1,5 @@
+package Zoologico.model;
+
 import java.util.random.RandomGenerator;
 
 public abstract class Animal {

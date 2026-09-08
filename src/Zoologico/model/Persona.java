@@ -1,3 +1,5 @@
+package Zoologico.model;
+
 import java.util.Objects;
 
 public abstract class Persona {
@@ -39,7 +41,7 @@ public abstract class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" +
+        return "Zoologico.model.Persona{" +
                 "nombre='" + nombre + '\'' +
                 ", dni=" + dni +
                 ", legajo=" + legajo +
