@@ -127,13 +127,12 @@ public abstract class Animal {
     public boolean enfermarse(){
         //si esta enfermo pasa a estar sano y viceversa
 
-        if(this.enfermo == true){
-            return false;
+        if(this.enfermo){
+            this.enfermo = false;
         }else{
-            return true;
+            this.enfermo = true;
         }
-
-
+        return isEnfermo();
     }
 
 }
