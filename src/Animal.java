@@ -1,3 +1,5 @@
+import java.util.random.RandomGenerator;
+
 public abstract class Animal {
     private String nombre, especie;
     private int hambre, salud, higiene;
@@ -59,6 +61,18 @@ public abstract class Animal {
         }
     }
 
+    public boolean chequeoSalud() {
+        //va de 0 a 3, cuando lleguie al 0 se debilitara pero no morira, como en pokemon
+        if (0 < this.salud && this.salud <= 3) {
+            return true;
+            //permite subirle la vida siempre y cuando sea mayor a 0.
+            //para revivirlo debera de llamar en el main a la opcion diferente de "reanimacion"
+        } else {
+            return false;
+            //no le permitira sanarse ya que esta al maximo o debilitado.
+        }
+    }
+
 
     /// ABSGTRACTOS?
     //no se donde ni como implementar comer o que carajo, la consigna muy vaga no me pone limites
@@ -67,7 +81,9 @@ public abstract class Animal {
     public void comer() {
         if (chequeoComer()) {
             this.hambre -= 1;
-            this.salud -= 1;
+            if (chequeoSalud()) {
+                this.salud += 1;
+            }
         }
 
     }
@@ -78,4 +94,26 @@ public abstract class Animal {
         }
     }
 
+    public void correr() {
+        // En lugar de "new Random()", pides el generador por defecto de Java
+        RandomGenerator generator = RandomGenerator.getDefault();
+
+        // El resto del código funciona exactamente igual
+        int numeroAleatorio = generator.nextInt(0, 101); // Rango directo entre 0 y 100
+
+
+        if (numeroAleatorio > 70) {
+            this.salud -= 1;
+        }
+    }
+    
+    public void rehabilitar(){
+        if(this.salud == 0){
+            this.salud += 1;
+        }
+    }
+
+
 }
+
+
