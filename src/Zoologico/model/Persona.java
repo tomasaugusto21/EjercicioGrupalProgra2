@@ -41,7 +41,7 @@ public abstract class Persona {
 
     @Override
     public String toString() {
-        return "Zoologico.model.Persona{" +
+        return "Persona{" +
                 "nombre='" + nombre + '\'' +
                 ", dni=" + dni +
                 ", legajo=" + legajo +
