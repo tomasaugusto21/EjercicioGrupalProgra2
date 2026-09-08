@@ -3,17 +3,19 @@ import java.util.random.RandomGenerator;
 public abstract class Animal {
     private String nombre, especie;
     private int hambre, salud, higiene;
+    private boolean enfermo;
     //0-nula 1-bajo 2-moderado 3-alto
 
     /// NOTA: comer deberia aumentarle la vida.
     /// chequeo higiene;
 
-    public Animal(String nombre, String especie, int hambre, int salud, int higiene) {
+    public Animal(String nombre, String especie, int hambre, int salud, int higiene,boolean enfermo) {
         this.nombre = nombre;
         this.especie = especie;
         this.hambre = hambre;
         this.salud = salud;
         this.higiene = higiene;
+        this.enfermo = enfermo;
     }
 
     public String getNombre() {
@@ -34,6 +36,10 @@ public abstract class Animal {
 
     public int getHigiene() {
         return higiene;
+    }
+
+    public boolean isEnfermo() {
+        return enfermo;
     }
 
     /// METODOS
@@ -62,11 +68,15 @@ public abstract class Animal {
     }
 
     public boolean chequeoSalud() {
-        //va de 0 a 3, cuando lleguie al 0 se debilitara pero no morira, como en pokemon
+        //va de 0 a 3, cuando lleguie al 0 se enfermara pero no morira.
+        if(this.salud < 0){
+            this.salud = 0;
+
+        }
         if (0 < this.salud && this.salud <= 3) {
             return true;
             //permite subirle la vida siempre y cuando sea mayor a 0.
-            //para revivirlo debera de llamar en el main a la opcion diferente de "reanimacion"
+            //para sacarle la enfermedad debera de llamar en el main a la opcion diferente de "enfermarse"
         } else {
             return false;
             //no le permitira sanarse ya que esta al maximo o debilitado.
@@ -110,9 +120,21 @@ public abstract class Animal {
     public void rehabilitar(){
         if(this.salud == 0){
             this.salud += 1;
+            enfermarse();
         }
     }
 
+    public boolean enfermarse(){
+        //si esta enfermo pasa a estar sano y viceversa
+
+        if(this.enfermo == true){
+            return false;
+        }else{
+            return true;
+        }
+
+
+    }
 
 }
 
