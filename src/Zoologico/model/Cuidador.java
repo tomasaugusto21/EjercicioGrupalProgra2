@@ -23,5 +23,63 @@ public class Cuidador extends Persona{
     }
 
 
+    public boolean alimentar (Animal animal){
+
+        if (animal instanceof Mamifero && this.especialidad == Especialidad.MAMIFERO){
+            return animal.comer();
+        }else if (animal instanceof Reptil && this.especialidad == Especialidad.REPTIL){
+            return animal.comer();
+        }else if (animal instanceof Ave && this.especialidad == Especialidad.AVE){
+            return animal.comer();
+        }
+
+        return false;
+
+    }
+
+    public boolean limpiar (Animal animal){
+
+        if (animal instanceof Mamifero && this.especialidad == Especialidad.MAMIFERO){
+            return animal.limpiarse();
+        }else if (animal instanceof Reptil && this.especialidad == Especialidad.REPTIL){
+            return animal.limpiarse();
+        }else if (animal instanceof Ave && this.especialidad == Especialidad.AVE){
+            return animal.limpiarse();
+        }
+
+        return false;
+
+    }
+
+    public boolean vacunar (Animal animal){
+
+        if (animal instanceof Mamifero && this.especialidad == Especialidad.MAMIFERO){
+            return animal.rehabilitar();
+        }else if (animal instanceof Reptil && this.especialidad == Especialidad.REPTIL){
+            return animal.rehabilitar();
+        }else if (animal instanceof Ave && this.especialidad == Especialidad.AVE){
+            return animal.rehabilitar();
+        }
+
+        return false;
+
+    }
+
+    public boolean jugar (Animal animal){
+
+        if (animal instanceof Mamifero && this.especialidad == Especialidad.MAMIFERO){
+            return animal.correr();
+        }else if (animal instanceof Reptil && this.especialidad == Especialidad.REPTIL){
+            return animal.correr();
+        }else if (animal instanceof Ave && this.especialidad == Especialidad.AVE){
+            return animal.correr();
+        }
+
+        return false;
+
+    }
+
+
+
 
 }

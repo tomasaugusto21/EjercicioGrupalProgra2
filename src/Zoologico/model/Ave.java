@@ -32,5 +32,5 @@ public class Ave extends Animal{
     public String toString() {
         return super.toString() + "el animal es Ave, el estado de su plumaje es " + estadoPlumaje + " y es " + capacidadDeVuelo;
     }
-    
+
 }
