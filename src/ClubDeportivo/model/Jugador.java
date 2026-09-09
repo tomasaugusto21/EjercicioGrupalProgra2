@@ -15,9 +15,8 @@ public class Jugador extends Persona  {
 
     //getters
 
-
     public Categoria getCategoria() {
-        return categoria;
+        return this.categoria;
     }
 
     public int getNumCamiseta() {

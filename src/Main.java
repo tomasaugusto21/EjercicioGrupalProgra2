@@ -1,5 +1,7 @@
 import Zoologico.model.*;
 import java.util.Scanner;
+package ClubDeportivo.model;
+
 
 public class Main {
 
@@ -142,8 +144,35 @@ public class Main {
                     opcion = scanner.nextInt();
                     scanner.nextLine();
                     switch (opcion) {
+                        //revisar los case nose porq me aparecen en rojo
                         case 1:
+                            Jugador nuevoJugador = new Jugador(33016244, "Lionel Messi", "24/06/1987", Categoria.PROFESIONAL, 10, futbol);
 
+                            if (equipo.agregarJugadores(nuevoJugador)) {
+                                System.out.println(">> ¡Jugador " + nuevoJugador.getNombre() + " agregado con éxito!");
+                            } else {
+                                System.out.println(">> Error al agregar al jugador (deporte incompatible o cupo lleno).");
+                            }
+                            break;
+                        case 2:
+                            System.out.println("\n--- Plantel de Jugadores ---");
+                            StringBuilder lista = equipo.mostrarJugadores();
+                            if (lista.length() == 0) {
+                                System.out.println("Aún no hay jugadores registrados.");
+                            } else {
+                                System.out.print(lista.toString());
+                            }
+                            break;
+
+                        case 3:
+                            System.out.println("\n--- Información del Equipo ---");
+                            System.out.println("Equipo: " + equipo.getNombreEquipo());
+                            System.out.println("Deporte: " + equipo.getDeporte().getNombreDeporte());
+                            System.out.println("Entrenador: " + equipo.getEntrenador().getNombre());
+                            break;
+
+                        case 4:
+                            System.out.println("Saliendo del sistema...");
                             break;
 
                         default:
