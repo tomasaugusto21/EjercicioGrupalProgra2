@@ -1,6 +1,9 @@
+import ClubDeportivo.model.*;
+import ClubDeportivo.model.Persona;
 import Zoologico.model.*;
 import java.util.Scanner;
-package ClubDeportivo.model;
+
+
 
 
 public class Main {
@@ -140,15 +143,18 @@ public class Main {
 
                     int opcion = 0;
                     System.out.println("MENU\n");
+                    Persona nuevaPersona = new Persona(46908121,"Guardiola","03/10/1999");
+                    Deporte nuevoDeporte = new Deporte("futbol","El mejor equipo del mundo",true,120,90);
+                    Jugador nuevoJugador = new Jugador(33016244, "Lionel Messi", "24/06/1987", Categoria.PROFESIONAL, 10,nuevoDeporte);
+                    Equipo nuevoEquipo = new Equipo("Independiente",nuevoDeporte,nuevaPersona);
 
                     opcion = scanner.nextInt();
                     scanner.nextLine();
                     switch (opcion) {
-                        //revisar los case nose porq me aparecen en rojo
-                        case 1:
-                            Jugador nuevoJugador = new Jugador(33016244, "Lionel Messi", "24/06/1987", Categoria.PROFESIONAL, 10, futbol);
 
-                            if (equipo.agregarJugadores(nuevoJugador)) {
+                        case 1:
+
+                            if (nuevoEquipo.agregarJugadores(nuevoJugador)) {
                                 System.out.println(">> ¡Jugador " + nuevoJugador.getNombre() + " agregado con éxito!");
                             } else {
                                 System.out.println(">> Error al agregar al jugador (deporte incompatible o cupo lleno).");
@@ -156,7 +162,7 @@ public class Main {
                             break;
                         case 2:
                             System.out.println("\n--- Plantel de Jugadores ---");
-                            StringBuilder lista = equipo.mostrarJugadores();
+                            System.out.println(nuevoEquipo.mostrarJugadores());
                             if (lista.length() == 0) {
                                 System.out.println("Aún no hay jugadores registrados.");
                             } else {
@@ -166,9 +172,9 @@ public class Main {
 
                         case 3:
                             System.out.println("\n--- Información del Equipo ---");
-                            System.out.println("Equipo: " + equipo.getNombreEquipo());
-                            System.out.println("Deporte: " + equipo.getDeporte().getNombreDeporte());
-                            System.out.println("Entrenador: " + equipo.getEntrenador().getNombre());
+                            System.out.println("Equipo: " + nuevoEquipo.getNombreEquipo());
+                            System.out.println("Deporte: " + nuevoEquipo.getDeporte().getNombreDeporte());
+                            System.out.println("Entrenador: " + nuevoEquipo.getEntrenador().getNombre());
                             break;
 
                         case 4:
