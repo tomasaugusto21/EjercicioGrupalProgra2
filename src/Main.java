@@ -1,43 +1,131 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
+package Zoologico;
 
-    Scanner scanner = new Scanner(System.in);
-    int i=0;
-    boolean incorrect;
-    String seguir = "si";
-//while desea continuar
-    while (seguir.equalsIgnoreCase("si")) {
-        //while ERROR
-        do {
-            incorrect = false;
+import Zoologico.model.*;
+import java.util.Scanner;
 
-            int opcion = 0;
-            System.out.println("MENU\n");
+public class Main {
 
-            opcion = scanner.nextInt();
-            scanner.nextLine();
-            switch (opcion) {
-                case 1:
+    public static void main(String[] args) {
 
-                    break;
+        Scanner scanner = new Scanner(System.in);
 
-                default:
-                    System.out.println("ERROR defaulting to main MENU\n");
-                    incorrect = true;
-                    break;
-            }
-        } while (incorrect);
-        System.out.println("Desea continuar en el MENU? \nSi-No\n");
-        seguir = scanner.nextLine();
-        scanner.nextLine();
+        // DECLARACIÓN E INICIALIZACIÓN DE LOS ARREGLOS
+        Animal[] animales = {
+                new Mamifero("León", "sabana", 2, 2, 1, false, TipoPelaje.GUARDIA),
+                new Reptil("Cobra", "venenosa", 3, 0, 2, true, true, false),
+                new Ave("Águila", "Austral", 1, 3, 3, false, "Bueno", CapacidadDeVuelo.VOLADOR)
+        };
+
+        Cuidador[] cuidadores = {
+                new Cuidador("Carlos", 38123456, 450000.0, Especialidad.MAMIFERO),
+                new Cuidador("Ana", 40987654, 480000.0, Especialidad.REPTIL),
+                new Cuidador("Luis", 42111222, 460000.0, Especialidad.AVE)
+        };
+
+        boolean incorrect;
+        String seguir = "si";
+
+        while (seguir.equalsIgnoreCase("si")) {
+
+            do {
+                incorrect = false;
+
+                System.out.println("\n=== MENÚ ZOOLÓGICO ===");
+                System.out.println("1. Mostrar todos los animales");
+                System.out.println("2. Mostrar todos los cuidadores");
+                System.out.println("3. Alimentar un animal");
+                System.out.println("4. Limpiar un animal");
+                System.out.println("5. Vacunar / Rehabilitar un animal");
+                System.out.println("6. Jugar / Hacer correr a un animal");
+                System.out.print("Elija una opción: ");
+
+                int opcion = scanner.nextInt();
+                scanner.nextLine();
+
+                switch (opcion) {
+                    case 1:
+                        System.out.println("\n--- ANIMALES ---");
+                        for (int i = 0; i < animales.length; i++) {
+                            System.out.println("[" + i + "] " + animales[i]);
+                        }
+                        break;
+
+                    case 2:
+                        System.out.println("\n--- CUIDADORES ---");
+                        for (int i = 0; i < cuidadores.length; i++) {
+                            System.out.println("[" + i + "] " + cuidadores[i]);
+                        }
+                        break;
+
+                    case 3:
+                        System.out.print("Índice del cuidador (0-2): ");
+                        int c1 = scanner.nextInt();
+                        System.out.print("Índice del animal (0-2): ");
+                        int a1 = scanner.nextInt();
+                        scanner.nextLine();
+
+                        if (cuidadores[c1].alimentar(animales[a1])) {
+                            System.out.println("¡Animal alimentado con éxito!");
+                        } else {
+                            System.out.println("No se pudo alimentar (especialidad no coincide o no tiene hambre).");
+                        }
+                        break;
+
+                    case 4:
+                        System.out.print("Índice del cuidador (0-2): ");
+                        int c2 = scanner.nextInt();
+                        System.out.print("Índice del animal (0-2): ");
+                        int a2 = scanner.nextInt();
+                        scanner.nextLine();
+
+                        if (cuidadores[c2].limpiar(animales[a2])) {
+                            System.out.println("¡Animal limpiado con éxito!");
+                        } else {
+                            System.out.println("No se pudo limpiar (especialidad no coincide o ya está limpio).");
+                        }
+                        break;
+
+                    case 5:
+                        System.out.print("Índice del cuidador (0-2): ");
+                        int c3 = scanner.nextInt();
+                        System.out.print("Índice del animal (0-2): ");
+                        int a3 = scanner.nextInt();
+                        scanner.nextLine();
+
+                        if (cuidadores[c3].vacunar(animales[a3])) {
+                            System.out.println("¡Animal rehabilitado con éxito!");
+                        } else {
+                            System.out.println("No se pudo vacunar (especialidad no coincide o salud mayor a 0).");
+                        }
+                        break;
+
+                    case 6:
+                        System.out.print("Índice del cuidador (0-2): ");
+                        int c4 = scanner.nextInt();
+                        System.out.print("Índice del animal (0-2): ");
+                        int a4 = scanner.nextInt();
+                        scanner.nextLine();
+
+                        if (cuidadores[c4].jugar(animales[a4])) {
+                            System.out.println("El animal corrió.");
+                        } else {
+                            System.out.println("No se pudo jugar (especialidad no coincide o el azar no activó la salud).");
+                        }
+                        break;
+
+                    default:
+                        System.out.println("ERROR defaulting to main MENU\n");
+                        incorrect = true;
+                        break;
+                }
+            } while (incorrect);
+
+            System.out.println("Desea continuar en el MENU? (si/no):");
+            seguir = scanner.nextLine();
+        }
+
+        System.out.println("Programa finalizado.");
+        scanner.close();
     }
-
-
-
-
 }
-
-
-
 
