@@ -143,6 +143,10 @@ public class Main {
 
                     int opcion = 0;
                     System.out.println("MENU\n");
+
+
+
+
                     Persona nuevaPersona = new Persona(46908121,"Guardiola","03/10/1999");
                     Deporte nuevoDeporte = new Deporte("futbol","El mejor equipo del mundo",true,120,90);
                     Jugador nuevoJugador = new Jugador(33016244, "Lionel Messi", "24/06/1987", Categoria.PROFESIONAL, 10,nuevoDeporte);
@@ -154,8 +158,39 @@ public class Main {
 
                         case 1:
 
-                            if (nuevoEquipo.agregarJugadores(nuevoJugador)) {
-                                System.out.println(">> ¡Jugador " + nuevoJugador.getNombre() + " agregado con éxito!");
+                            System.out.println("Agregar jugador a equipo: ");
+
+                            System.out.println("Ingrese dni: ");
+                            int dni = scanner.nextInt();
+                            scanner.nextLine();
+                            System.out.println("Ingrese nombre: ");
+                            String nombre = scanner.nextLine();
+                            System.out.println("Ingrese fecha de nacimiento: ");
+                            String fechaNacimiento = scanner.nextLine();
+                            System.out.println();
+                            System.out.println("Ingrese categoria (1.Profesional - 2.Amateur - 3. Hobbie): ");
+                            int opcionCategoria = scanner.nextInt();
+                            scanner.nextLine();
+                            Categoria categoria = null;
+
+                            if (opcionCategoria == 1){
+                                categoria = Categoria.PROFESIONAL;
+                            }else if(opcionCategoria == 2){
+                                categoria = Categoria.AMATEUR;
+                            }else if(opcionCategoria ==3){
+                                categoria = Categoria.HOBBIE;
+                            }else{
+                                System.out.println("opcion no valida");
+                            }
+
+                            System.out.println("Ingrese dorsal: ");
+                            int dorsal = scanner.nextInt();
+                            scanner.nextLine();
+
+                            Jugador jugadorAAgregar = new Jugador(dni, nombre, fechaNacimiento, categoria, dorsal, nuevoDeporte);
+
+                            if (nuevoEquipo.agregarJugadores(jugadorAAgregar)) {
+                                System.out.println(">> ¡Jugador " + jugadorAAgregar.getNombre() + " agregado con éxito!");
                             } else {
                                 System.out.println(">> Error al agregar al jugador (deporte incompatible o cupo lleno).");
                             }
@@ -163,11 +198,7 @@ public class Main {
                         case 2:
                             System.out.println("\n--- Plantel de Jugadores ---");
                             System.out.println(nuevoEquipo.mostrarJugadores());
-                            if (lista.length() == 0) {
-                                System.out.println("Aún no hay jugadores registrados.");
-                            } else {
-                                System.out.print(lista.toString());
-                            }
+
                             break;
 
                         case 3:

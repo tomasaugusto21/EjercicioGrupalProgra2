@@ -1,5 +1,5 @@
 package ClubDeportivo.model;
 
 public enum Categoria {
-    HOBBIE , AMATEUR , PROFESIONAL
+    HOBBIE, AMATEUR, PROFESIONAL
 }
