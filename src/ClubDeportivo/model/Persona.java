@@ -2,7 +2,7 @@ package ClubDeportivo.model;
 
 import java.util.Objects;
 
-public abstract class Persona {
+public class Persona {
 
     private String nombre;
     private String fechaDeNacimiento;
