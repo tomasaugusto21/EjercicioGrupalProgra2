@@ -43,7 +43,7 @@ public class Deporte {
                 "Nombre del deporte:'" + nombreDeporte + '\'' +
                 ", Descripcion:'" + descripcion + '\'' +
                 ", Se juega con pelota?:" + seJuegaConPelota +
-                ", Dimension de la cancha:" + largo + ancho +
+                ", Dimension de la cancha:" + largo +"X"+ ancho +
                 '}';
     }
 }

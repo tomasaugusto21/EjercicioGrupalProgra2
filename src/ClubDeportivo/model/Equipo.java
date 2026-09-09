@@ -49,8 +49,8 @@ public class Equipo {
         if (jugador == null){
             return false;
         }
-        //tira error porque hay que agregar el getDeporte de la clase Jugador
-        if (jugador.getDeporte != this.deporte){
+
+        if (jugador.getDeporte() != this.deporte){
             return false;
         }
 

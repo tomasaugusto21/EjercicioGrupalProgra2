@@ -1,5 +1,3 @@
-package Zoologico;
-
 import Zoologico.model.*;
 import java.util.Scanner;
 
@@ -24,7 +22,11 @@ public class Main {
 
         boolean incorrect;
         String seguir = "si";
+        int opcionEjercicio;
 
+        System.out.println("Ingrese 1 para ir a El zoologico o 2 para dirigirse al Club deportivo");
+        opcionEjercicio = scanner.nextInt();
+        if(opcionEjercicio == 1){
         while (seguir.equalsIgnoreCase("si")) {
 
             do {
@@ -126,6 +128,42 @@ public class Main {
 
         System.out.println("Programa finalizado.");
         scanner.close();
+    }else if(opcionEjercicio == 2){
+
+            //while desea continuar
+            while (seguir.equalsIgnoreCase("si")) {
+                //while ERROR
+                do {
+                    incorrect = false;
+
+                    int opcion = 0;
+                    System.out.println("MENU\n");
+
+                    opcion = scanner.nextInt();
+                    scanner.nextLine();
+                    switch (opcion) {
+                        case 1:
+
+                            break;
+
+                        default:
+                            System.out.println("ERROR defaulting to main MENU\n");
+                            incorrect = true;
+                            break;
+                    }
+                } while (incorrect);
+                System.out.println("Desea continuar en el MENU? \nSi-No\n");
+                seguir = scanner.nextLine();
+                scanner.nextLine();
+
+                System.out.println("Programa finalizado.");
+                scanner.close();
+            }
+
+        }else{
+            System.out.println("ERROR: ingreso un ejercicio inexistente. \n Finalizando sesion.");
+        }
     }
 }
+
 
