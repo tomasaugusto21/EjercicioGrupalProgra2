@@ -47,7 +47,7 @@ public abstract class Animal {
     /// METODOS
 
     //chquea si tiene hambre para comer
-    public boolean chequeoComer() {
+    private boolean chequeoComer() {
         //en el caso de comer bajo = poca hambre. mientras que alto seria mucha hambre
         if (0 < this.hambre && this.hambre <= 3) {
             return true;
@@ -58,7 +58,7 @@ public abstract class Animal {
         }
     }
 
-    public boolean chequeoSucio() {
+    private boolean chequeoSucio() {
         //en el caso de higiene bajo = mucha suciedad. mientras que alto seria limpio
         if (0 < this.higiene && this.higiene <= 3) {
             return true;
@@ -69,7 +69,7 @@ public abstract class Animal {
         }
     }
 
-    public boolean chequeoSalud() {
+    private boolean chequeoSalud() {
         //va de 0 a 3, cuando lleguie al 0 se enfermara pero no morira.
         if(this.salud < 0){
             this.salud = 0;
@@ -133,7 +133,7 @@ public abstract class Animal {
         return false;
     }
 
-    public boolean enfermarse(){
+    private boolean enfermarse(){
         //si esta enfermo pasa a estar sano y viceversa
 
         if(this.enfermo){
